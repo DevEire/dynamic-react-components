@@ -2,6 +2,8 @@
 
 This library allows you to render isolated React components on the front end. It is especially useful in cases where you need to ingest back-end data/endpoints but don't have access to the back-end renderer.
 
+`npm i @deveire/dynamic-react-components`
+
 ------
 
 ### Setup

@@ -14,7 +14,7 @@ This library allows you to render isolated React components on the front end. It
 
 # How to use this library
 
-This library does not contain React, or React DOM - these must be included in the projects you are running this library with. The reason is that the components will need to be created in the external project, so you will be needed React to do that anyway.
+This library does not contain React, or React DOM - these must be included in the projects you are running this library with. The reason is that the components will need to be created in the external project, so you will be need React to do that there.
 
 Using the `dynamicReactComponents(options)` is as simple as:
 

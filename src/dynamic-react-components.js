@@ -39,18 +39,23 @@ export function dynamicReactComponents(options = {
 		}
 
 		let componentName
+		let endpoint
 		let json
 		let root
 
     domElements.forEach((element) => {
-      // import/render each element, passing the JSON/data?
+      // import/render each element
       componentName = element.getAttribute('data-component')
+      endpoint = element.getAttribute('data-endpoint')
       json = element.getAttribute('data-json')
       root = options.createRoot(element)
 
 			if (options.components.hasOwnProperty(componentName)) {
 				root.render(
-					options.React.createElement(options.components[componentName], { json })
+					options.React.createElement(options.components[componentName], {
+						json,
+						endpoint
+					})
 				)
 			} else {
 				console.log('%cDynamic React Components: Component not found ->', 'color: #d84315', componentName)
@@ -58,7 +63,7 @@ export function dynamicReactComponents(options = {
     })
   }
 
-  const DynamicReactComponents_update = () => {
+  const dynamicReactComponents_update = () => {
     if (!window.DynamicReactComponents && document.readyState === 'complete') {
       initializeDynamicReactComponents()
     } else {
@@ -70,7 +75,7 @@ export function dynamicReactComponents(options = {
     }
   }
 
-  document.addEventListener('readystatechange', DynamicReactComponents_update, true)
+  document.addEventListener('readystatechange', dynamicReactComponents_update, true)
 
-  DynamicReactComponents_update()
+  dynamicReactComponents_update()
 }

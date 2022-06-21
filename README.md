@@ -33,7 +33,7 @@ dynamicReactComponents({
   },
   React,
   createRoot,
-  elementSelector: 'react-bsp'
+  selector: 'dynamic-react-component'
 })
 
 ```

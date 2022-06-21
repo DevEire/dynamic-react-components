@@ -20,5 +20,9 @@
 	},
 	"devDependencies": {
 		"vite": "^2.9.9"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/DevEire/dynamic-react-components"
 	}
 }

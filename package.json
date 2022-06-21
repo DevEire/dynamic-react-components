@@ -1,0 +1,26 @@
+{
+	"name": "@deveire/dynamic-react-components",
+	"version": "0.0.1",
+	"description": "Dynamically render React components.",
+	"author": "shane@deveire.com",
+	"license": "ISC",
+	"files": [
+		"dist"
+	],
+	"main": "./dist/dynamic-react-components.umd.js",
+	"module": "./dist/dynamic-react-components.es.js",
+	"exports": {
+		".": {
+			"import": "./dist/dynamic-react-components.es.js",
+			"require": "./dist/dynamic-react-components.umd.js"
+		}
+	},
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"vite": "^2.9.9"
+	}
+}

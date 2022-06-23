@@ -39,8 +39,6 @@ export function dynamicReactComponents(options = {
 		}
 
 		let componentName
-		let endpoint
-		let json
 		let root
 		let props
 		let prop

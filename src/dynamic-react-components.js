@@ -57,7 +57,7 @@ export function dynamicReactComponents(options = {
 			props = {}
 
 			for (prop in element.dataset) {
-				props[prop] = prop
+				props[prop] = element.dataset[prop]
 			}
 
 			if (options.components.hasOwnProperty(componentName)) {

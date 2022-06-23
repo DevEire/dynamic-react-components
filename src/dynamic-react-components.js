@@ -46,7 +46,7 @@ export function dynamicReactComponents(options = {
 		let prop
 
     domElements.forEach((element) => {
-			if (element.hasAttribute('data-component')) {
+			if (!element.hasAttribute('data-component')) {
 				console.log('%cDynamic React Components: Component name must be passed using the `data-component` attribute.', 'color: #d84315', element)
 				return
 			}

@@ -1,6 +1,6 @@
 {
 	"name": "@deveire/dynamic-react-components",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "Dynamically render React components.",
 	"author": "shane@deveire.com",
 	"license": "ISC",

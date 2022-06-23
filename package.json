@@ -1,6 +1,6 @@
 {
 	"name": "@deveire/dynamic-react-components",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Dynamically render React components.",
 	"author": "shane@deveire.com",
 	"license": "ISC",
@@ -24,5 +24,8 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/DevEire/dynamic-react-components"
+	},
+	"dependencies": {
+		"@deveire/dynamic-react-components": "^0.1.0"
 	}
 }

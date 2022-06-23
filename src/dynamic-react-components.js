@@ -42,20 +42,27 @@ export function dynamicReactComponents(options = {
 		let endpoint
 		let json
 		let root
+		let props
+		let prop
 
     domElements.forEach((element) => {
-      // import/render each element
+			if (element.hasAttribute('data-component')) {
+				console.log('%cDynamic React Components: Component name must be passed using the `data-component` attribute.', 'color: #d84315', element)
+				return
+			}
+
       componentName = element.getAttribute('data-component')
-      endpoint = element.getAttribute('data-endpoint')
-      json = element.getAttribute('data-json')
       root = options.createRoot(element)
+
+			props = {}
+
+			for (prop in element.dataset) {
+				props[prop] = prop
+			}
 
 			if (options.components.hasOwnProperty(componentName)) {
 				root.render(
-					options.React.createElement(options.components[componentName], {
-						json,
-						endpoint
-					})
+					options.React.createElement(options.components[componentName], props)
 				)
 			} else {
 				console.log('%cDynamic React Components: Component not found ->', 'color: #d84315', componentName)

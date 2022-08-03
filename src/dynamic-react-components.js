@@ -2,30 +2,31 @@
 // import { createRoot } from 'react-dom/client'
 
 export function dynamicReactComponents(options = {
-	components: {},
-	React: false,
-	createRoot: false,
-	selector: 'dynamic-react-component',
-	disableLogs: false
+  components: {},
+  React: false,
+  createRoot: false,
+  selector: 'dynamic-react-component',
+  disableLogs: false
 }) {
   const DEBUG =
-		!options.disableLogs && (
-		window.location.hostname === 'localhost' ||
-		window.location.href.includes('_drc=debug'))
+    !options.disableLogs && (
+    window.location.hostname === 'localhost' ||
+    window.location.href.includes('_drc=debug'))
 
-	DEBUG && console.log('Dynamic React Components: Debug enabled.')
+  DEBUG && console.log('Dynamic React Components: Debug enabled.')
 
-	if (!options.React) {
-		console.error('Dynamic React Components: Requires React to be passsed as an options argument.')
-		return
-	}
-	if (!options.createRoot) {
-		console.error('Dynamic React Components: Requires createRoot to be passsed as an options argument.')
-		return
-	}
+  if (!options.React) {
+    console.error('Dynamic React Components: Requires React to be passsed as an options argument.')
+    return
+  }
+
+  if (!options.createRoot) {
+    console.error('Dynamic React Components: Requires createRoot to be passsed as an options argument.')
+    return
+  }
 
   const DynamicReactComponents = {}
-	DynamicReactComponents.options = options
+  DynamicReactComponents.options = options
 
   const initializeDynamicReactComponents = () => {
     window.DynamicReactComponents = DynamicReactComponents
@@ -33,38 +34,40 @@ export function dynamicReactComponents(options = {
 
     const domElements = document.querySelectorAll(options.selector)
 
-		if (domElements.length === 0) {
-			DEBUG && console.log('Dynamic React Components: No components to render. Options used:', options)
-			return
-		}
+    if (domElements.length === 0) {
+      DEBUG && console.log('Dynamic React Components: No components to render. Options used:', options)
+      return
+    }
 
-		let componentName
-		let root
-		let props
-		let prop
+    let componentName
+    let root
+    let props
+    let prop
 
     domElements.forEach((element) => {
-			if (!element.hasAttribute('data-component')) {
-				console.log('%cDynamic React Components: Component name must be passed using the `data-component` attribute.', 'color: #d84315', element)
-				return
-			}
+      if (!element.hasAttribute('data-component')) {
+        console.log('%cDynamic React Components: Component name must be passed using the `data-component` attribute.', 'color: #d84315', element)
+        return
+      }
 
       componentName = element.getAttribute('data-component')
       root = options.createRoot(element)
 
-			props = {}
+      props = {}
 
-			for (prop in element.dataset) {
-				props[prop] = element.dataset[prop]
-			}
+      for (prop in element.dataset) {
+        props[prop] = element.dataset[prop]
+      }
 
-			if (options.components.hasOwnProperty(componentName)) {
-				root.render(
-					options.React.createElement(options.components[componentName], props)
-				)
-			} else {
-				console.log('%cDynamic React Components: Component not found ->', 'color: #d84315', componentName)
-			}
+      props._innerHTML = element.innerHTML
+
+      if (options.components.hasOwnProperty(componentName)) {
+        root.render(
+          options.React.createElement(options.components[componentName], props)
+        )
+      } else {
+        console.log('%cDynamic React Components: Component not found ->', 'color: #d84315', componentName)
+      }
     })
   }
 

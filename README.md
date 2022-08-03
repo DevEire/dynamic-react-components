@@ -23,6 +23,8 @@ This is a basic example of a component that is being passed some simple JSON.
 
 **Note:** You can pass any number of `data-` attributes that will get picked up and passed through automatically to your React component props.
 
+Any inner HTML (if any) will be passed under `props._innerHTML`.
+
 ## In Your JavaScript
 
 Using the `dynamicReactComponents(options)` is as simple as:

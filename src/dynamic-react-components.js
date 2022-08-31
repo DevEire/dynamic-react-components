@@ -83,7 +83,10 @@ export function dynamicReactComponents(options = {
     }
   }
 
-  document.addEventListener('readystatechange', dynamicReactComponents_update, true)
-
-  dynamicReactComponents_update()
+	if (document.readyState === 'loading') {
+		DEBUG && console.log('Dynamic React Components: Listener added for DOMContentLoaded.')
+		document.addEventListener('DOMContentLoaded', dynamicReactComponents_update)
+	} else {
+		dynamicReactComponents_update()
+	}
 }

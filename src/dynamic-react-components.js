@@ -60,6 +60,7 @@ export function dynamicReactComponents(options = {
       }
 
       props._innerHTML = element.innerHTML
+			element.innerHTML = ''
 
       if (options.components.hasOwnProperty(componentName)) {
         root.render(

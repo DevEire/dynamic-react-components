@@ -76,17 +76,14 @@ export function dynamicReactComponents(options = {
       initializeDynamicReactComponents()
     } else {
       if (window.DynamicReactComponents) {
-        console.log('%cDynamic React Components: Already initialized.', 'color: #d84315', window.DynamicReactComponents)
+        DEBUG && console.log('%cDynamic React Components: Already initialized.', 'color: #d84315', window.DynamicReactComponents)
       } else {
         DEBUG && console.log('Dynamic React Components: Document not ready.')
       }
     }
   }
 
-	if (document.readyState === 'loading') {
-		DEBUG && console.log('Dynamic React Components: Listener added for DOMContentLoaded.')
-		document.addEventListener('DOMContentLoaded', dynamicReactComponents_update)
-	} else {
-		dynamicReactComponents_update()
-	}
+	document.addEventListener('readystatechange', dynamicReactComponents_update, true)
+
+	dynamicReactComponents_update()
 }
